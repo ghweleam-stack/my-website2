@@ -1,0 +1,168 @@
+/* ===== الألوان الأساسية (هوية الموقع) ===== */
+:root {
+  --primary: #2b81c3;      /* بنفسجي: اللون الأساسي */
+  --secondary: #ff9f1c;    /* برتقالي: اللون الثانوي */
+  --bg: #f7f5fb;           /* خلفية محايدة فاتحة */
+  --text: #2b2b3a;         /* لون النص */
+}
+
+/* ===== الخط العام: Cairo ===== */
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* ===== شريط التنقل ===== */
+.main-navbar {
+  background: linear-gradient(90deg, var(--primary), #2db16d);
+}
+.main-navbar .nav-link:hover,
+.main-navbar .nav-link.active {
+  color: var(--secondary);
+}
+
+/* ===== شريط أسماء الفريق ===== */
+.team-bar {
+  background-color: var(--secondary);
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+/* ===== عناوين الأقسام ===== */
+.section-title {
+  color: var(--primary);
+  font-weight: 700;
+  border-right: 6px solid var(--secondary);
+  padding-right: 12px;
+}
+
+/* ===== نص السلايدر فوق الصورة ===== */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+/* ===== كروت الفعاليات ===== */
+.event-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;  /* حركة ناعمة */
+}
+.event-card:hover {
+  transform: translateY(-8px);                  /* الكرت يرتفع عند المرور */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.event-card .card-img-top {
+  height: 200px;
+  object-fit: cover;   /* الصورة تملأ المساحة بدون تشوه */
+}
+.event-card .btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.event-card .btn-primary:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+/* ===== شارات التصنيفات (لون لكل تصنيف) ===== */
+.category-badge {
+  font-size: 1rem;
+  padding: 12px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s;
+}
+.category-badge:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+.cat-culture { background-color: #8e44ad; }
+.cat-sport   { background-color: #27ae60; }
+.cat-music   { background-color: #e74c3c; }
+.cat-family  { background-color: #f39c12; }
+.cat-edu     { background-color: #2980b9; }
+
+/* ===== الفوتر ===== */
+.main-footer {
+  background-color: var(--primary);
+  color: #fff;
+}
+.footer-link {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.footer-link:hover {
+  text-decoration: underline;
+}
+/* ===== شريط الفلترة ===== */
+.filter-bar {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid var(--secondary);
+}
+/* ===== تجاوب الجوال ===== */
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 250px !important;   /* سلايدر أصغر على الجوال */
+  }
+  .carousel-caption h3 {
+    font-size: 1.1rem;
+  }
+}
+/* ===== صفحة تفاصيل الفعالية ===== */
+.event-main-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+.info-list li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.gallery-img {
+  height: 110px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+/* ===== صفحة عن الدليل ===== */
+.info-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--secondary);
+}
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.team-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-6px);
+}
+.team-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;           /* صورة دائرية */
+  border: 4px solid var(--secondary);
+}
+/* ===== صفحة اتصل بنا ===== */
+.contact-box {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid var(--secondary);
+}

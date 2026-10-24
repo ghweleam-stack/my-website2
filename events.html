@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>كل الفعاليات | دليل فعاليات الجامعة الافتراضية</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== الهيدر ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark main-navbar">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">🎓 دليل الفعاليات</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+            <li class="nav-item"><a class="nav-link active" href="events.html">كل الفعاليات</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">عن الدليل</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">اتصل بنا</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== القسم 1: عنوان الصفحة ===== -->
+    <section class="container my-5">
+      <h1 class="section-title">📅 كل الفعاليات</h1>
+      <p class="mt-3">تصفّح فعاليات الجامعة، وصفِّها حسب التصنيف أو التاريخ أو المكان.</p>
+    </section>
+
+    <!-- ===== القسم 2: شريط البحث والفلترة ===== -->
+    <section class="container mb-4">
+      <div class="filter-bar p-3 rounded-4">
+        <div class="row g-3">
+
+          <div class="col-12 col-md-3">
+            <label class="form-label" for="searchInput">بحث بالاسم</label>
+            <input type="text" id="searchInput" class="form-control" placeholder="اكتب اسم الفعالية">
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label" for="categoryFilter">التصنيف</label>
+            <select id="categoryFilter" class="form-select">
+              <option value="all">الكل</option>
+              <option value="culture">ثقافة</option>
+              <option value="sport">رياضة</option>
+              <option value="music">موسيقى</option>
+              <option value="family">عائلي</option>
+              <option value="edu">تعليمي</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label" for="locationFilter">الموقع</label>
+            <select id="locationFilter" class="form-select">
+              <option value="all">الكل</option>
+              <option value="online">افتراضي (أونلاين)</option>
+              <option value="campus">ساحة الجامعة</option>
+              <option value="hall">قاعة الجامعة</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label" for="dateFilter">من تاريخ</label>
+            <input type="date" id="dateFilter" class="form-control">
+          </div>
+
+        </div>
+
+        <button id="resetBtn" class="btn btn-secondary mt-3">إعادة ضبط الفلاتر</button>
+      </div>
+    </section>
+
+    <!-- ===== القسم 3: قائمة الفعاليات ===== -->
+    <section class="container mb-5">
+
+      <!-- رسالة عند عدم وجود نتائج (مخفية افتراضياً) -->
+      <div id="noResults" class="alert alert-warning d-none">لا توجد فعاليات مطابقة للبحث.</div>
+
+      <div class="row g-4" id="eventsList">
+
+        <!-- فعالية 1 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="music" data-date="2026-11-01" data-location="hall" data-title="الحفل الموسيقي السنوي">
+          <div class="card event-card h-100">
+            <img src="assets/img/music.jpg" class="card-img-top" alt="حفل موسيقي">
+            <div class="card-body">
+              <span class="badge cat-music">موسيقى</span>
+              <h5 class="card-title mt-2">الحفل الموسيقي السنوي</h5>
+              <p class="mb-1">📅 2026-11-01</p>
+              <p class="mb-1">📍 قاعة الجامعة</p>
+              <p class="card-text">أمسية موسيقية مميزة لطلاب الجامعة.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- فعالية 2 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="sport" data-date="2026-11-03" data-location="campus" data-title="البطولة الرياضية">
+          <div class="card event-card h-100">
+            <img src="assets/img/sport.jpg" class="card-img-top" alt="بطولة رياضية">
+            <div class="card-body">
+              <span class="badge cat-sport">رياضة</span>
+              <h5 class="card-title mt-2">البطولة الرياضية</h5>
+              <p class="mb-1">📅 2026-11-03</p>
+              <p class="mb-1">📍 ساحة الجامعة</p>
+              <p class="card-text">منافسات رياضية بين كليات الجامعة.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- فعالية 3 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="culture" data-date="2026-11-05" data-location="hall" data-title="المعرض الفني الطلابي">
+          <div class="card event-card h-100">
+            <img src="assets/img/culture.jpg" class="card-img-top" alt="معرض فني">
+            <div class="card-body">
+              <span class="badge cat-culture">ثقافة</span>
+              <h5 class="card-title mt-2">المعرض الفني الطلابي</h5>
+              <p class="mb-1">📅 2026-11-05</p>
+              <p class="mb-1">📍 قاعة الجامعة</p>
+              <p class="card-text">أعمال فنية من إبداع الطلاب.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- فعالية 4 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="edu" data-date="2026-11-08" data-location="online" data-title="ندوة التعلم الإلكتروني">
+          <div class="card event-card h-100">
+            <img src="assets/img/seminar.jpg" class="card-img-top" alt="ندوة">
+            <div class="card-body">
+              <span class="badge cat-edu">تعليمي</span>
+              <h5 class="card-title mt-2">ندوة التعلم الإلكتروني</h5>
+              <p class="mb-1">📅 2026-11-08</p>
+              <p class="mb-1">📍 افتراضي (أونلاين)</p>
+              <p class="card-text">ندوة عن مستقبل التعليم عن بُعد.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- فعالية 5 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="edu" data-date="2026-11-10" data-location="online" data-title="ورشة تطوير المواقع">
+          <div class="card event-card h-100">
+            <img src="assets/img/workshop.jpg" class="card-img-top" alt="ورشة عمل">
+            <div class="card-body">
+              <span class="badge cat-edu">تعليمي</span>
+              <h5 class="card-title mt-2">ورشة تطوير المواقع</h5>
+              <p class="mb-1">📅 2026-11-10</p>
+              <p class="mb-1">📍 افتراضي (أونلاين)</p>
+              <p class="card-text">ورشة عملية لتعلم HTML وCSS وBootstrap.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- فعالية 6 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="family" data-date="2026-11-15" data-location="campus" data-title="اليوم العائلي">
+          <div class="card event-card h-100">
+            <img src="assets/img/family.jpg" class="card-img-top" alt="يوم عائلي">
+            <div class="card-body">
+              <span class="badge cat-family">عائلي</span>
+              <h5 class="card-title mt-2">اليوم العائلي</h5>
+              <p class="mb-1">📅 2026-11-15</p>
+              <p class="mb-1">📍 ساحة الجامعة</p>
+              <p class="card-text">يوم ترفيهي للطلاب وعائلاتهم.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- فعالية 7 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="culture" data-date="2026-11-20" data-location="hall" data-title="حفل التخرج">
+          <div class="card event-card h-100">
+            <img src="assets/img/graduation.jpg" class="card-img-top" alt="حفل تخرج">
+            <div class="card-body">
+              <span class="badge cat-culture">ثقافة</span>
+              <h5 class="card-title mt-2">حفل التخرج</h5>
+              <p class="mb-1">📅 2026-11-20</p>
+              <p class="mb-1">📍 قاعة الجامعة</p>
+              <p class="card-text">تكريم الخريجين الجدد.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- فعالية 8 -->
+        <div class="col-12 col-md-6 col-lg-4 event-item" data-category="family" data-date="2026-11-25" data-location="campus" data-title="جولة في الحرم الجامعي">
+          <div class="card event-card h-100">
+            <img src="assets/img/campus.jpg" class="card-img-top" alt="الحرم الجامعي">
+            <div class="card-body">
+              <span class="badge cat-family">عائلي</span>
+              <h5 class="card-title mt-2">جولة في الحرم الجامعي</h5>
+              <p class="mb-1">📅 2026-11-25</p>
+              <p class="mb-1">📍 ساحة الجامعة</p>
+              <p class="card-text">جولة تعريفية للطلاب الجدد.</p>
+              <a href="event.html" class="btn btn-primary">التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== الفوتر ===== -->
+  <footer class="main-footer text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-1">📧 info@events-guide.com | 📞 +963 000 000 000</p>
+      <p class="mb-1">
+        <a href="#" class="footer-link">فيسبوك</a> |
+        <a href="#" class="footer-link">انستغرام</a> |
+        <a href="#" class="footer-link">تويتر</a>
+      </p>
+      <p class="mb-0">© 2026 دليل فعاليات الجامعة الافتراضية - جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

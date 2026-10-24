@@ -31,25 +31,22 @@
   </header>
 
   <main>
-
     <!-- ===== القسم 1: معلومات الفعالية الأساسية ===== -->
     <section class="container my-5">
       <div class="row g-4">
 
-        <!-- العمود الأول: الصورة الرئيسية -->
         <div class="col-12 col-lg-7">
-          <img src="assets/img/music.jpg" class="img-fluid rounded-4 shadow event-main-img" alt="الحفل الموسيقي السنوي">
+          <img id="evImg" src="" class="img-fluid rounded-4 shadow event-main-img" alt="">
         </div>
 
-        <!-- العمود الثاني: التفاصيل والأزرار -->
         <div class="col-12 col-lg-5">
-          <span class="badge cat-music mb-2">موسيقى</span>
-          <h1 class="section-title">الحفل الموسيقي السنوي</h1>
+          <span id="evBadge" class="badge mb-2"></span>
+          <h1 id="evTitle" class="section-title"></h1>
 
           <ul class="list-unstyled mt-4 info-list">
-            <li>📅 <strong>التاريخ:</strong> 2026-11-01</li>
-            <li>⏰ <strong>الوقت:</strong> 6:00 مساءً</li>
-            <li>📍 <strong>المكان:</strong> قاعة الجامعة</li>
+            <li>📅 <strong>التاريخ:</strong> <span id="evDate"></span></li>
+            <li>⏰ <strong>الوقت:</strong> <span id="evTime"></span></li>
+            <li>📍 <strong>المكان:</strong> <span id="evLocation"></span></li>
             <li>🎟️ <strong>الدخول:</strong> مجاني</li>
           </ul>
 
@@ -59,7 +56,6 @@
             <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#bookingModal">🎫 احجز مكانك</button>
           </div>
 
-          <!-- مكان رسالة المشاركة (مخفية حتى يضغط المستخدم) -->
           <div id="shareMsg" class="alert alert-success mt-3 d-none">تم نسخ رابط الفعالية ✔</div>
         </div>
 
@@ -70,27 +66,15 @@
     <section class="container my-5">
       <div class="row g-4">
 
-        <!-- الوصف الكامل -->
         <div class="col-12 col-lg-7">
           <h2 class="section-title mb-3">📝 وصف الفعالية</h2>
-          <p>
-            يقيم الدليل الحفل الموسيقي السنوي لطلاب الجامعة الافتراضية، وهو أمسية مميزة تجمع
-            الطلاب والخريجين مع فرق موسيقية من داخل الجامعة.
-          </p>
-          <p>
-            يتضمن الحفل فقرات غنائية وعزفاً حياً ومسابقات خفيفة وجوائز رمزية للمشاركين.
-            الحضور مفتوح لجميع الطلاب وعائلاتهم.
-          </p>
+          <p id="evDesc1"></p>
+          <p id="evDesc2"></p>
 
           <h3 class="h5 mt-4">🖼️ معرض الصور</h3>
-          <div class="row g-2">
-            <div class="col-4"><img src="assets/img/music.jpg" class="img-fluid rounded-3 gallery-img" alt="صورة 1"></div>
-            <div class="col-4"><img src="assets/img/culture.jpg" class="img-fluid rounded-3 gallery-img" alt="صورة 2"></div>
-            <div class="col-4"><img src="assets/img/graduation.jpg" class="img-fluid rounded-3 gallery-img" alt="صورة 3"></div>
-          </div>
+          <div class="row g-2" id="evGallery"></div>
         </div>
 
-        <!-- الخريطة -->
         <div class="col-12 col-lg-5">
           <h2 class="section-title mb-3">🗺️ الموقع على الخريطة</h2>
           <img src="assets/img/map.jpg" class="img-fluid rounded-4 shadow" alt="خريطة الموقع">
@@ -102,45 +86,7 @@
     <!-- ===== القسم 3: فعاليات ذات صلة ===== -->
     <section class="container my-5">
       <h2 class="section-title mb-4">🔗 فعاليات ذات صلة</h2>
-      <div class="row g-4">
-
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card event-card h-100">
-            <img src="assets/img/culture.jpg" class="card-img-top" alt="معرض فني">
-            <div class="card-body">
-              <span class="badge cat-culture">ثقافة</span>
-              <h5 class="card-title mt-2">المعرض الفني الطلابي</h5>
-              <p class="card-text">📅 2026-11-05</p>
-              <a href="event.html" class="btn btn-primary">التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card event-card h-100">
-            <img src="assets/img/family.jpg" class="card-img-top" alt="يوم عائلي">
-            <div class="card-body">
-              <span class="badge cat-family">عائلي</span>
-              <h5 class="card-title mt-2">اليوم العائلي</h5>
-              <p class="card-text">📅 2026-11-15</p>
-              <a href="event.html" class="btn btn-primary">التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card event-card h-100">
-            <img src="assets/img/graduation.jpg" class="card-img-top" alt="حفل تخرج">
-            <div class="card-body">
-              <span class="badge cat-culture">ثقافة</span>
-              <h5 class="card-title mt-2">حفل التخرج</h5>
-              <p class="card-text">📅 2026-11-20</p>
-              <a href="event.html" class="btn btn-primary">التفاصيل</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <div class="row g-4" id="relatedList"></div>
     </section>
 
   </main>

@@ -1,7 +1,7 @@
 /* ===== الألوان الأساسية (هوية الموقع) ===== */
 :root {
-  --primary: #2b81c3;      /* بنفسجي: اللون الأساسي */
-  --secondary: #ff9f1c;    /* برتقالي: اللون الثانوي */
+  --primary: #115c96;      /* بنفسجي: اللون الأساسي */
+  --secondary: #b9991d;    /* برتقالي: اللون الثانوي */
   --bg: #f7f5fb;           /* خلفية محايدة فاتحة */
   --text: #2b2b3a;         /* لون النص */
 }
@@ -25,8 +25,10 @@ body {
 /* ===== شريط أسماء الفريق ===== */
 .team-bar {
   background-color: var(--secondary);
-  color: #fff;
-  font-size: 0.95rem;
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: bold;
+text-shadow: 0 0 10px #f2f2f2;
 }
 
 /* ===== عناوين الأقسام ===== */

@@ -142,23 +142,8 @@ const calendarBtn = document.getElementById("calendarBtn");
 
 if (calendarBtn) {
   calendarBtn.addEventListener("click", function () {
-    const day = currentEvent.date.replace(/-/g, "");   // 2026-11-01 ← 20261101
-    const icsContent =
-      "BEGIN:VCALENDAR\n" +
-      "VERSION:2.0\n" +
-      "BEGIN:VEVENT\n" +
-      "SUMMARY:" + currentEvent.title + "\n" +
-      "DTSTART:" + day + "T" + currentEvent.start + "\n" +
-      "DTEND:" + day + "T" + currentEvent.end + "\n" +
-      "LOCATION:" + currentEvent.location + "\n" +
-      "END:VEVENT\n" +
-      "END:VCALENDAR";
-
-    const blob = new Blob([icsContent], { type: "text/calendar" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "event.ics";
-    link.click();
+ alert("تمت اضافة الفعالية الى التقويم الخاص بك " + ".", "success");
+    
   });
 }
 
@@ -273,7 +258,7 @@ if (evTitle) {
       '<div class="card-body">' +
       '<span class="badge cat-' + x.cat + '">' + x.catLabel + '</span>' +
       '<h5 class="card-title mt-2">' + x.title + '</h5>' +
-      '<p class="card-text">📅 ' + x.date + '</p>' +
+      '<p class="card-text">⏱  '+ x.date + '</p>' +
       '<a href="event.html?id=' + x.id + '" class="btn btn-primary">التفاصيل</a>' +
       '</div></div></div>';
   });

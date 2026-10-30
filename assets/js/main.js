@@ -1,11 +1,6 @@
-/* =====================================================
-   main.js - كل التفاعلية في الموقع
-   الملف مربوط بكل الصفحات، لذلك نتأكد دائماً أن العنصر
-   موجود قبل استخدامه (if) حتى لا يحدث خطأ في صفحة ثانية.
-   ===================================================== */
 
 
-/* ========== 1) فلترة الفعاليات (events.html) ========== */
+/*  1) فلترة الفعاليات (events.html)  */
 const searchInput    = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const locationFilter = document.getElementById("locationFilter");

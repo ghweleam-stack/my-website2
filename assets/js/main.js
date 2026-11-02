@@ -1,6 +1,6 @@
 
 
-/*  1) فلترة الفعاليات (events.html)  */
+// فلترة الفعاليات - صفحة events
 const searchInput    = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const locationFilter = document.getElementById("locationFilter");
@@ -8,14 +8,14 @@ const dateFilter     = document.getElementById("dateFilter");
 const resetBtn       = document.getElementById("resetBtn");
 const noResults      = document.getElementById("noResults");
 
-// نتنفذ الكود فقط إذا كنا في صفحة الفعاليات
+// بس إذا كنا بصفحة الفعاليات
 if (searchInput) {
 
-  // نجلب كل بطاقات الفعاليات
+  // كل الكروت
   const items = document.querySelectorAll(".event-item");
 
   function filterEvents() {
-    // نقرأ قيم الفلاتر الحالية
+    // قيم الفلاتر
     const text     = searchInput.value.trim();
     const category = categoryFilter.value;
     const location = locationFilter.value;
@@ -23,20 +23,20 @@ if (searchInput) {
 
     let visibleCount = 0;
 
-    // نمر على كل فعالية ونقرر هل نظهرها أم نخفيها
+    // نعدّي على كل فعالية
     items.forEach(function (item) {
       const itemTitle    = item.dataset.title;
       const itemCategory = item.dataset.category;
       const itemLocation = item.dataset.location;
       const itemDate     = item.dataset.date;
 
-      // كل شرط يكون true إذا الفعالية تطابق الفلتر (أو الفلتر غير مستخدم)
+      // الشروط
       const matchText     = text === ""        || itemTitle.includes(text);
       const matchCategory = category === "all" || itemCategory === category;
       const matchLocation = location === "all" || itemLocation === location;
       const matchDate     = date === ""        || itemDate >= date;
 
-      // تظهر الفعالية فقط إذا تحققت كل الشروط معاً
+      // لازم كل الشروط تتحقق
       if (matchText && matchCategory && matchLocation && matchDate) {
         item.classList.remove("d-none");
         visibleCount++;
@@ -45,7 +45,7 @@ if (searchInput) {
       }
     });
 
-    // إذا لم يبق شيء نعرض رسالة "لا توجد نتائج"
+    // إذا ما طلع ولا نتيجة
     if (visibleCount === 0) {
       noResults.classList.remove("d-none");
     } else {
@@ -53,13 +53,13 @@ if (searchInput) {
     }
   }
 
-  // ننفذ الفلترة عند أي تغيير في الفلاتر
+  // الفلترة بتشتغل مع أي تغيير
   searchInput.addEventListener("input", filterEvents);
   categoryFilter.addEventListener("change", filterEvents);
   locationFilter.addEventListener("change", filterEvents);
   dateFilter.addEventListener("change", filterEvents);
 
-  // زر إعادة الضبط
+  // زر الريست
   resetBtn.addEventListener("click", function () {
     searchInput.value    = "";
     categoryFilter.value = "all";
@@ -70,60 +70,60 @@ if (searchInput) {
 }
 
 
-/* ========== 2) التحقق من نموذج اتصل بنا (contact.html) ========== */
+// نموذج اتصل بنا
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
 
   const alertBox = document.getElementById("alertBox");
 
-  // دالة تعرض Bootstrap Alert (النوع: success أو danger)
+  // رسالة النجاح / الخطأ
   function showAlert(message, type) {
     alertBox.innerHTML =
       '<div class="alert alert-' + type + '">' + message + '</div>';
   }
 
   contactForm.addEventListener("submit", function (event) {
-    // نمنع الإرسال الافتراضي للصفحة
+    // نوقف الإرسال العادي
     event.preventDefault();
 
     const name    = document.getElementById("name").value.trim();
     const email   = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    // صيغة البريد الصحيحة (Regular Expression)
+    // فحص الايميل
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 1) الحقول المطلوبة
+    // لو في حقل فاضي
     if (name === "" || email === "" || message === "") {
-      showAlert("❌ الرجاء تعبئة جميع الحقول.", "danger");
+      showAlert("الرجاء تعبئة جميع الحقول.", "danger");
       return;
     }
 
-    // 2) صيغة البريد
+    // الايميل مو صحيح
     if (!emailPattern.test(email)) {
-      showAlert("❌ صيغة البريد الإلكتروني غير صحيحة.", "danger");
+      showAlert("صيغة البريد الإلكتروني غير صحيحة.", "danger");
       return;
     }
 
-    // 3) كل شيء صحيح
-    showAlert("✅ تم إرسال رسالتك بنجاح، شكراً لتواصلك " + name + ".", "success");
-    contactForm.reset();   // تفريغ الحقول
+    // تمام
+    showAlert("تم إرسال رسالتك بنجاح، شكراً لتواصلك " + name + ".", "success");
+    contactForm.reset();
   });
 }
 
 
-/* ========== 3) زر المشاركة (event.html) ========== */
+// زر المشاركة
 const shareBtn = document.getElementById("shareBtn");
 
 if (shareBtn) {
   const shareMsg = document.getElementById("shareMsg");
 
   shareBtn.addEventListener("click", function () {
-    // ننسخ رابط الصفحة الحالية إلى الحافظة
+    // نسخ الرابط
     navigator.clipboard.writeText(window.location.href).then(function () {
       shareMsg.classList.remove("d-none");
-      // نخفي الرسالة بعد 3 ثواني
+      // بتختفي بعد 3 ثواني
       setTimeout(function () {
         shareMsg.classList.add("d-none");
       }, 3000);
@@ -132,7 +132,7 @@ if (shareBtn) {
 }
 
 
-/* ========== 4) زر أضف للتقويم (event.html) ========== */
+// زر التقويم
 const calendarBtn = document.getElementById("calendarBtn");
 
 if (calendarBtn) {
@@ -143,7 +143,7 @@ if (calendarBtn) {
 }
 
 
-/* ========== 5) حجز مكان وهمي (Modal في event.html) ========== */
+// الحجز (وهمي)
 const bookBtn = document.getElementById("bookBtn");
 
 if (bookBtn) {
@@ -152,17 +152,15 @@ if (bookBtn) {
 
   bookBtn.addEventListener("click", function () {
     if (bookName.value.trim() === "") {
-      bookName.classList.add("is-invalid");   // إطار أحمر
+      bookName.classList.add("is-invalid");
       return;
     }
     bookName.classList.remove("is-invalid");
-    bookMsg.classList.remove("d-none");       // رسالة النجاح
+    bookMsg.classList.remove("d-none");
     bookName.value = "";
   });
 }
-/* =====================================================
-   بيانات الفعاليات (مصدر واحد لصفحة التفاصيل)
-   ===================================================== */
+// بيانات الفعاليات (صفحة التفاصيل بتاخد منها)
 const eventsData = {
   1: { id: 1, title: "الحفل الموسيقي السنوي", cat: "music", catLabel: "موسيقى",
        date: "2026-11-01", time: "6:00 مساءً", start: "180000", end: "210000",
@@ -206,11 +204,11 @@ const eventsData = {
        desc2: "يتعرف المشاركون على القاعات والمكتبة والخدمات الطلابية." }
 };
 
-// نقرأ رقم الفعالية من الرابط (event.html?id=3)
+// الرقم من الرابط event.html?id=3
 const params = new URLSearchParams(window.location.search);
 const currentId = params.get("id") || "1";
 const currentEvent = eventsData[currentId] || eventsData[1];
-/* ========== 6) تعبئة صفحة التفاصيل حسب الفعالية المختارة ========== */
+// تعبئة صفحة التفاصيل
 const evTitle = document.getElementById("evTitle");
 
 if (evTitle) {
@@ -231,7 +229,7 @@ if (evTitle) {
   document.getElementById("evDesc1").textContent = e.desc1;
   document.getElementById("evDesc2").textContent = e.desc2;
 
-  // معرض الصور: صورة الفعالية + صورتان من فعاليتين أخريين
+  // المعرض: صورة الفعالية + صورتين غيرها
   const gallery = document.getElementById("evGallery");
   const galleryIds = [e.id, e.id % 8 + 1, (e.id + 1) % 8 + 1];
   galleryIds.forEach(function (i) {
@@ -240,7 +238,7 @@ if (evTitle) {
       '" class="img-fluid rounded-3 gallery-img" alt="' + eventsData[i].title + '"></div>';
   });
 
-  // فعاليات ذات صلة: الأولوية لنفس التصنيف
+  // فعاليات مشابهة (نفس التصنيف أول شي)
   const related = Object.values(eventsData).filter(function (x) { return x.id !== e.id; });
   related.sort(function (a, b) { return (b.cat === e.cat) - (a.cat === e.cat); });
 

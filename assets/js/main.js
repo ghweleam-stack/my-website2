@@ -1,52 +1,51 @@
 
 
 // فلترة الفعاليات - صفحة events
-const searchInput    = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const locationFilter = document.getElementById("locationFilter");
-const dateFilter     = document.getElementById("dateFilter");
-const resetBtn       = document.getElementById("resetBtn");
-const noResults      = document.getElementById("noResults");
+const searchInput = document.getElementById("searchInput");
+const catFilter = document.getElementById("categoryFilter");
+const locFilter = document.getElementById("locationFilter");
+const dateFilter = document.getElementById("dateFilter");
+const resetBtn = document.getElementById("resetBtn");
+const noResults = document.getElementById("noResults");
 
 // بس إذا كنا بصفحة الفعاليات
 if (searchInput) {
 
   // كل الكروت
-  const items = document.querySelectorAll(".event-item");
+  const cards = document.querySelectorAll(".event-item");
 
   function filterEvents() {
-    // قيم الفلاتر
-    const text     = searchInput.value.trim();
-    const category = categoryFilter.value;
-    const location = locationFilter.value;
-    const date     = dateFilter.value;
+    console.log("filter");
+    const text = searchInput.value.trim();
+    const category = catFilter.value;
+    const loc = locFilter.value;
+    const date = dateFilter.value;
 
-    let visibleCount = 0;
+    let count = 0;
 
     // نعدّي على كل فعالية
-    items.forEach(function (item) {
-      const itemTitle    = item.dataset.title;
+    cards.forEach(function (item) {
+      const itemTitle = item.dataset.title;
       const itemCategory = item.dataset.category;
-      const itemLocation = item.dataset.location;
+      const itemLoc = item.dataset.location;
       const itemDate     = item.dataset.date;
 
-      // الشروط
-      const matchText     = text === ""        || itemTitle.includes(text);
-      const matchCategory = category === "all" || itemCategory === category;
-      const matchLocation = location === "all" || itemLocation === location;
-      const matchDate     = date === ""        || itemDate >= date;
+      const matchText = text === "" || itemTitle.includes(text);
+      const matchCat = category == "all" || itemCategory == category;
+      const matchLoc = loc == "all" || itemLoc == loc;
+      const matchDate = date == "" || itemDate >= date;
 
       // لازم كل الشروط تتحقق
-      if (matchText && matchCategory && matchLocation && matchDate) {
+      if (matchText && matchCat && matchLoc && matchDate) {
         item.classList.remove("d-none");
-        visibleCount++;
+        count++;
       } else {
         item.classList.add("d-none");
       }
     });
 
     // إذا ما طلع ولا نتيجة
-    if (visibleCount === 0) {
+    if (count == 0) {
       noResults.classList.remove("d-none");
     } else {
       noResults.classList.add("d-none");
@@ -54,16 +53,16 @@ if (searchInput) {
   }
 
   // الفلترة بتشتغل مع أي تغيير
-  searchInput.addEventListener("input", filterEvents);
-  categoryFilter.addEventListener("change", filterEvents);
-  locationFilter.addEventListener("change", filterEvents);
+  searchInput.addEventListener("input" , filterEvents);
+  catFilter.addEventListener("change", filterEvents);
+  locFilter.addEventListener("change", filterEvents);
   dateFilter.addEventListener("change", filterEvents);
 
-  // زر الريست
+  // زر الريست  (مو متأكد اذا لازم)
   resetBtn.addEventListener("click", function () {
     searchInput.value    = "";
-    categoryFilter.value = "all";
-    locationFilter.value = "all";
+    catFilter.value = "all";
+    locFilter.value = "all";
     dateFilter.value     = "";
     filterEvents();
   });
@@ -75,7 +74,7 @@ const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
 
-  const alertBox = document.getElementById("alertBox");
+  var alertBox = document.getElementById("alertBox");
 
   // رسالة النجاح / الخطأ
   function showAlert(message, type) {
@@ -84,18 +83,17 @@ if (contactForm) {
   }
 
   contactForm.addEventListener("submit", function (event) {
-    // نوقف الإرسال العادي
     event.preventDefault();
 
-    const name    = document.getElementById("name").value.trim();
-    const email   = document.getElementById("email").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
 
     // فحص الايميل
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     // لو في حقل فاضي
-    if (name === "" || email === "" || message === "") {
+    if (name == "" || email == "" || message == ""){
       showAlert("الرجاء تعبئة جميع الحقول.", "danger");
       return;
     }
@@ -106,7 +104,7 @@ if (contactForm) {
       return;
     }
 
-    // تمام
+    // نجح
     showAlert("تم إرسال رسالتك بنجاح، شكراً لتواصلك " + name + ".", "success");
     contactForm.reset();
   });
@@ -120,7 +118,7 @@ if (shareBtn) {
   const shareMsg = document.getElementById("shareMsg");
 
   shareBtn.addEventListener("click", function () {
-    // نسخ الرابط
+    // copy
     navigator.clipboard.writeText(window.location.href).then(function () {
       shareMsg.classList.remove("d-none");
       // بتختفي بعد 3 ثواني
@@ -143,7 +141,7 @@ if (calendarBtn) {
 }
 
 
-// الحجز (وهمي)
+// الحجز
 const bookBtn = document.getElementById("bookBtn");
 
 if (bookBtn) {
@@ -231,7 +229,7 @@ if (evTitle) {
 
   // المعرض: صورة الفعالية + صورتين غيرها
   const gallery = document.getElementById("evGallery");
-  const galleryIds = [e.id, e.id % 8 + 1, (e.id + 1) % 8 + 1];
+  var galleryIds = [e.id, e.id % 8 + 1, (e.id + 1) % 8 + 1];
   galleryIds.forEach(function (i) {
     gallery.innerHTML +=
       '<div class="col-4"><img src="assets/img/' + eventsData[i].img +
@@ -239,10 +237,10 @@ if (evTitle) {
   });
 
   // فعاليات مشابهة (نفس التصنيف أول شي)
-  const related = Object.values(eventsData).filter(function (x) { return x.id !== e.id; });
+  let related = Object.values(eventsData).filter(function (x) { return x.id !== e.id; });
   related.sort(function (a, b) { return (b.cat === e.cat) - (a.cat === e.cat); });
 
-  const relatedList = document.getElementById("relatedList");
+  var relatedList = document.getElementById("relatedList");
   related.slice(0, 3).forEach(function (x) {
     relatedList.innerHTML +=
       '<div class="col-12 col-md-6 col-lg-4">' +
